@@ -526,7 +526,19 @@ module Moped
     #
     # @since 1.0.0
     def inspect
-      "<#{self.class.name} resolved_address=#{address.resolved.inspect}>"
+      "<#{self.class.name} host=#{address.host.inspect} resolved_address=#{address.resolved.inspect}>"
+    end
+
+    # Must the node resolve its host name to its IP address
+    #
+    # @example Must the node resolve its node name?
+    #   node.resolve?
+    #
+    # @return [ true, false ] If the node resolves its host name to its IP address
+    #
+    # @since 2.0.0
+    def resolve?
+	@resolve ||= options[:resolve].nil? ? true : options[:resolve]
     end
 
     private
@@ -693,5 +705,6 @@ module Moped
     def queue
       stack(:pipelined_operations)
     end
+
   end
 end

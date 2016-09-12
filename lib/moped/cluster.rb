@@ -103,6 +103,8 @@ module Moped
       @seeds = hosts.map{ |host| Node.new(host, options) }
       @peers = []
       @options = options
+      msg = ["  MOPED:", ": hosts are #{hosts.join(", ")}; refresh is #{refresh_interval}", "n/a"]
+      Loggable.info(*msg)
     end
 
     # Provide a pretty string for cluster inspection.
