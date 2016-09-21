@@ -538,7 +538,7 @@ module Moped
     #
     # @since 2.0.0
     def resolve?
-	@resolve ||= options[:resolve].nil? ? true : options[:resolve]
+	@resolve ||= (options[:resolve].nil? || options[:resolve].empty?) ? true : options[:resolve]
     end
 
     private
