@@ -250,12 +250,6 @@ module Moped
     # @since 1.5.0
     option(:auto_discover).allow(true, false)
 
-    # Setup validation of always resolve behaviour. (Any boolean)
-    #
-    # @since 2.0.0
-    option(:resolve).allow(true, false)
-
-
     # Initialize a new database session.
     #
     # @example Initialize a new session.
@@ -272,6 +266,12 @@ module Moped
       @options = options
       @cluster = Cluster.new(seeds, options)
     end
+
+    # Toggle resolution of DNS in Ruby for nodes.
+    #
+    # @since 2.0.0
+    #
+    option(:resolve).allow(Optionable.any(Object))
 
     # Create a new session with +options+ and use new socket connections.
     #
