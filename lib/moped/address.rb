@@ -50,7 +50,7 @@ module Moped
       unless node.resolve?
 	@resolved = "#{host}:#{port}"
 	@ip       = nil
-        msg = ["  MOPED:", ": CACHED resolved address for #{host}, it's #{resolved}", "n/a"]
+        msg = ["  MOPED:", ": skipped resolve for #{host}, it's #{resolved}", "n/a"]
         Loggable.info(*msg)
 	return @resolved
       end

@@ -82,7 +82,7 @@ module Moped
           timeout: node.options[:pool_timeout] || TIMEOUT
         ) do
           Connection.new(
-            node.address.ip,
+            node.address.ip || node.address.host,
             node.address.port,
             node.options[:timeout] || Connection::TIMEOUT,
             node.options
